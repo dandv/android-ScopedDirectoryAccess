@@ -3,31 +3,31 @@ Android ScopedDirectoryAccess Sample
 ===================================
 
 This sample demonstrates how to use the Scoped Directory Access API introduced in Android N
-to easily access to specific directories such as Pictures, Downloads instead of requesting
-READ_EXTERNAL_STORAGE or WRITE_EXTERNAL_STORAGE in your manifest.
+to easily get access to specific directories such as `Pictures` or `Downloads` instead of
+requesting `READ_EXTERNAL_STORAGE` or `WRITE_EXTERNAL_STORAGE` in your manifest.
 
 Introduction
 ------------
 
-This sample demonstrates how to use the Scoped Directory Access API that provides easy way to
+This sample demonstrates how to use the Scoped Directory Access API that provides an easy way to
 access specific directories instead of:
- - Requesting READ_EXTERNAL_STORAGE or WRITE_EXTERNAL_STORAGE in your manifest, which allows
+ - Requesting `READ_EXTERNAL_STORAG`E or `WRITE_EXTERNAL_STORAGE` in your manifest, which allows
    access to all public directories on external storage.
  - Using the Storage Access Framework, where the user usually picks directories via a System UI,
-   which is unnecessary if you app always accesses to the same external directory.
+   which is unnecessary if your app always accesses to the same external directory.
 
-To access to a specific directory, use a new Intent created using the StorageVolume class like
-following:
+To access to a specific directory, use a new Intent created using the [StorageVolume class](https://developer.android.com/reference/android/os/storage/StorageVolume.html)
+as follows:
 
-```
+```java
 StorageManager sm = getSystemService(StorageManager.class);
 StorageVolume volume = sm.getPrimaryVolume();
 Intent intent = volume.createAccessIntent(Environment.DIRECTORY_PICTURES);
 startActivityForResult(intent, request_code);
 ```
 
-Note that the argument passed to StorageVolume.createAccessIntent needs to be one of the
-values of Environment.DIRECTORY_\*.
+Note that the argument passed to `StorageVolume.createAccessIntent` needs to be one of the
+values of `Environment.DIRECTORY_\*`.
 
 Once the user grants the access, `onActivityResult` override will be called with a
 result code of `Activity.RESULT_OK` and an intent data that contains the URI representing
@@ -54,14 +54,13 @@ This sample uses the Gradle build system. To build this project, use the
 Support
 -------
 
-- Google+ Community: https://plus.google.com/communities/105153134372062985968
-- Stack Overflow: http://stackoverflow.com/questions/tagged/android
+- [Google+ Community](https://plus.google.com/communities/105153134372062985968)
+- [Stack Overflow](http://stackoverflow.com/questions/tagged/android)
 
-If you've found an error in this sample, please file an issue:
-https://github.com/googlesamples/android-ScopedDirectoryAccess
+If you've found an error in this sample, please [file an issue](https://github.com/googlesamples/android-ScopedDirectoryAccess).
 
 Patches are encouraged, and may be submitted by forking this project and
-submitting a pull request through GitHub. Please see CONTRIBUTING.md for more details.
+submitting a pull request through GitHub. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 
 License
 -------
